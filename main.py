@@ -1,4 +1,6 @@
-from pyrogram import Client, Filters
+from pyrogram import filters
+from pyrogram.types import Message
+from pyrogram import Client
 import logging
 import os
 
