@@ -11,7 +11,7 @@ app = Client(name="okk", api_id=API_ID, api_hash=API_HASH, bot_token=BOT_TOKEN, 
 
 # Enable logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
-logger = logging.getLogger(name)
+logger = logging.getLogger(__name__)
 
 # Define a few command handlers. These usually take the two arguments bot and 
 # update. Error handlers also receive the raised TelegramError object in error.
