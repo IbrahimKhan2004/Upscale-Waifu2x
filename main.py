@@ -1,5 +1,4 @@
 from pyrogram import filters
-from pyrogram.types import Message
 from pyrogram import Client
 import logging
 import os
@@ -12,16 +11,16 @@ app = Client(name="okk", api_id=API_ID, api_hash=API_HASH, bot_token=BOT_TOKEN, 
 
 # Enable logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name)
 
 # Define a few command handlers. These usually take the two arguments bot and 
 # update. Error handlers also receive the raised TelegramError object in error.
-@app.on_message(pyrogram.Filters.command("start"))
+@app.on_message(filters.command("start"))
 def start(client, message):
     message.reply_text("Hi!")
 
 # Kick new members when they join the group or channel
-@app.on_message(pyrogram.Filters.group)
+@app.on_message(filters.group)
 def kick_new_members(client, message):
     # Get the list of users in the chat
     chat_members = client.get_chat_members_count(message.chat.id)
@@ -41,7 +40,7 @@ def kick_new_members(client, message):
         old_members = chat_members
 
 # on different commands - answer in Telegram
-@app.on_message(pyrogram.Filters.command)
+@app.on_message(filters.text)
 def unknown(client, message):
     message.reply_text("Sorry, I didn't understand that command.")
 
