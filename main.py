@@ -1,7 +1,7 @@
 import logging
 import pyrogram
 import os
-from pyrogram import Client, Filters
+from pyrogram import Client, Filters, idle
 
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 API_ID = os.getenv("API_ID")
