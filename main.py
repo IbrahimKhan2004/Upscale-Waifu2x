@@ -1,10 +1,13 @@
 import logging
 import pyrogram
 import os
+from pyrogram import Client, filters, idle
 
-TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
-TELEGRAM_API_ID = os.getenv("TELEGRAM_API_ID")
-TELEGRAM_API_HASH = os.getenv("TELEGRAM_API_HASH")
+BOT_TOKEN = os.getenv("BOT_TOKEN")
+API_ID = os.getenv("API_ID")
+API_HASH = os.getenv("API_HASH")
+
+app = Client(name="okk", api_id=TELEGRAM_API_ID, api_hash=TELEGRAM_API_HASH, bot_token=TELEGRAM_BOT_TOKEN, in memory=True)
 
 # Enable logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
