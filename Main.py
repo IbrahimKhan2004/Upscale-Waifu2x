@@ -1,11 +1,14 @@
 import logging
 import pyrogram
+import os
+
+TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
+TELEGRAM_API_ID = os.getenv("TELEGRAM_API_ID")
+TELEGRAM_API_HASH = os.getenv("TELEGRAM_API_HASH")
 
 # Enable logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 logger = logging.getLogger(__name__)
-
-app = pyrogram.Client("YOUR_APP_NAME")
 
 # Define a few command handlers. These usually take the two arguments bot and 
 # update. Error handlers also receive the raised TelegramError object in error.
