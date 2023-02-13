@@ -7,41 +7,15 @@ BOT_TOKEN = os.getenv("BOT_TOKEN")
 API_ID = os.getenv("API_ID")
 API_HASH = os.getenv("API_HASH")
 
+#initialize bot
 app = Client(name="okk", api_id=API_ID, api_hash=API_HASH, bot_token=BOT_TOKEN, in_memory=True)
 
-# Enable logging
-logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
-logger = logging.getLogger(__name__)
+#handle new members on join
+@app.on_message(pyrogram.Filters.group & pyrogram.Filters.new_chat_members)
+def kick_new_users(client, message):
+  for user in message.new_chat_members:
+    msg = client.kick_chat_member(chat_id=message.chat.id, user_id=user.id)
+    print(msg)
 
-# Define a few command handlers. These usually take the two arguments bot and 
-# update. Error handlers also receive the raised TelegramError object in error.
-@app.on_message(filters.command("start"))
-def start(client, message):
-    message.reply_text("Hi!")
-
-# Kick new members when they join the group or channel
-@app.on_message(filters.group)
-def kick_new_members(client, message):
-    # Get the list of users in the chat
-    chat_members = client.get_chat_members_count(message.chat.id)
-
-    # Get the list of new members who joined recently
-    new_members = [member for member in chat_members if member not in old_members]
-
-    # Kick out all new members
-    for member in new_members:
-        # Kick out the member from the chat
-        client.kick_chat_member(message.chat.id, member)
-
-        # Log that a user has been kicked out
-        logger.info("Kicked out user %s", member)
-
-        # Update old members list with current members list
-        old_members = chat_members
-
-# on different commands - answer in Telegram
-@app.on_message(filters.text)
-def unknown(client, message):
-    message.reply_text("Sorry, I didn't understand that command.")
-
+#start bot
 app.run()
