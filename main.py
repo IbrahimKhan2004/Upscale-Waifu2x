@@ -1,5 +1,5 @@
 from pyrogram import filters
-from pyrogram import Client, new_chat_members
+from pyrogram import Client
 import logging
 import os
 
