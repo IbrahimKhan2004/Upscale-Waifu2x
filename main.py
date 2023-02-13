@@ -1,5 +1,5 @@
 from pyrogram import filters
-from pyrogram import Client, status_update, new_chat_members
+from pyrogram import Client, new_chat_members
 import logging
 import os
 
@@ -16,7 +16,7 @@ async def start(client, message):
     await message.reply("Hi! Thanks for adding me.")
 
 #Add New Member Handler
-@app.on_message(filters.status_update.new_chat_members)
+@app.on_message(filters..new_chat_members)
 async def new_member(client, message):
     await message.reply("Welcome mate, unfortunately you've been kicked!")
     await app.kick_chat_member(message.chat.id, message.from_user.id)
