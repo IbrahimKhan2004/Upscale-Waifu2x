@@ -11,12 +11,12 @@ API_HASH = os.getenv("API_HASH")
 app = Client(name="okk", api_id=API_ID, api_hash=API_HASH, bot_token=BOT_TOKEN, in_memory=True)
 
 #Add Start Handler
-@app.on_message(pyrogram.Filters.command(["start"]))
+@app.on_message(Filters.command(["start"]))
 async def start(client, message):
     await message.reply("Hi! Thanks for adding me.")
 
 #Add New Member Handler
-@app.on_message(pyrogram.Filters.status_update.new_chat_members)
+@app.on_message(Filters.status_update.new_chat_members)
 async def new_member(client, message):
     await message.reply("Welcome mate, unfortunately you've been kicked!")
     await app.kick_chat_member(message.chat.id, message.from_user.id)
