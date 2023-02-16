@@ -6,9 +6,9 @@ import requests
 from ratelimit import limits, sleep_and_retry
 
 # Replace the values below with your own Telegram API credentials and bot token
-api_id = os.environ['TELEGRAM_API_ID']
-api_hash = os.environ['TELEGRAM_API_HASH']
-bot_token = os.environ['TELEGRAM_BOT_TOKEN']
+api_id = os.environ['15535379']
+api_hash = os.environ['3001c54565a7ab9ae6f83193fb0507ee']
+bot_token = os.environ['5416516270:AAGIHPSgH-YOf9f-3EzknPF7eMSrJAiTl7g']
 
 # Create a Telethon client instance
 bot = TelegramClient('image_upscale_bot', api_id, api_hash).start(bot_token=bot_token)
