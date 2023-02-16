@@ -8,4 +8,4 @@ COPY . .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Run the command to start the bot
-CMD ["python3", "bot.py"]
+CMD ["python", "bot.py"]
