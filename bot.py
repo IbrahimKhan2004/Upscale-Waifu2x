@@ -35,13 +35,14 @@ def upscale_image_waifu2x(image_url):
 async def upscale_image(event):
     # Download the image sent by the user
     image_message = await event.get_reply_message()
-    image_url = image_message.photo.url
+    if image_message and hasattr(image_message, 'photo'):
+        image_url = image_message.photo.url
 
-    # Upscale the image using Waifu2x
-    image = upscale_image_waifu2x(image_url)
+        # Upscale the image using Waifu2x
+        image = upscale_image_waifu2x(image_url)
 
-    # Send the upscaled image back to the user
-    await bot.send_file(event.chat_id, image)
+        # Send the upscaled image back to the user
+        await bot.send_file(event.chat_id, image)
 
 # Start the bot
 bot.run_until_disconnected()
