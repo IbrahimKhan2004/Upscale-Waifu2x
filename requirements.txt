@@ -1,1 +1,7 @@
-pyrogram
+telethon
+pillow
+requests
+numpy
+tensorflow
+keras
+
