@@ -1,17 +1,14 @@
-# Use a base image with Python installed
-FROM python:3.8-alpine
+# Use an official Python runtime as a parent image
+FROM python:3.9-slim-buster
 
-# Set the working directory in the container
+# Set the working directory to /app
 WORKDIR /app
 
-# Copy the requirements file to the container
-COPY requirements.txt .
+# Copy the current directory contents into the container at /app
+COPY ..
 
-# Install the required packages
-RUN pip install -r requirements.txt
+# Install any needed packages specified in requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the code to the container
-COPY . .
-
-# Command to run when the container starts
-CMD ["python", "main.py"]
+# Run the command to start the bot
+CMD ["python", "bot.py"]
