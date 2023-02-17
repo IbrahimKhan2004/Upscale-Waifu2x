@@ -1,11 +1,12 @@
-# Use an official Python runtime as a parent image
-FROM python:3.9-slim-buster
+FROM python:3.9-slim
 
-# Copy the current directory contents into the container at /app
-COPY . .
+WORKDIR /app
 
 # Install any needed packages specified in requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Run the command to start the bot
+# Copy the code into the container
+COPY bot.py .
+
+# Start the bot
 CMD ["python", "bot.py"]
